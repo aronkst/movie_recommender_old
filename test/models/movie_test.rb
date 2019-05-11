@@ -1,12 +1,12 @@
 require 'test_helper'
 
 class MovieTest < ActiveSupport::TestCase
-  test 'não deve salvar um filme vazio' do
+  test 'should not save an empty movie' do
     movie = Movie.new
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com a coluna imdb vazia' do
+  test 'should not save a movie with the empty imdb column' do
     movie = Movie.new(
       score: 8.8,
       title: 'Avengers: Endgame',
@@ -17,7 +17,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com a coluna score vazia' do
+  test 'should not save a movie with the empty score column' do
     movie = Movie.new(
       imdb: 'tt4154796',
       title: 'Avengers: Endgame',
@@ -28,7 +28,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com a coluna title vazia' do
+  test 'should not save a movie with the empty title column' do
     movie = Movie.new(
       imdb: 'tt4154796',
       score: 8.8,
@@ -39,7 +39,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com a coluna summary vazia' do
+  test 'should not save a movie with the empty summary column' do
     movie = Movie.new(
       imdb: 'tt4154796',
       score: 8.8,
@@ -50,7 +50,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com a coluna year vazia' do
+  test 'should not save a movie with the empty year column' do
     movie = Movie.new(
       imdb: 'tt4154796',
       score: 8.8,
@@ -61,7 +61,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com a coluna genres vazia' do
+  test 'should not save a movie with the empty genres column' do
     movie = Movie.new(
       imdb: 'tt4154796',
       score: 8.8,
@@ -72,7 +72,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com o score menor que 0' do
+  test 'should not save a movie with a score less than 0' do
     movie = Movie.new(
       imdb: 'tt4154796',
       score: -1.0,
@@ -84,7 +84,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com o score maior que 10' do
+  test 'should not save a movie with a score greater than 10' do
     movie = Movie.new(
       imdb: 'tt4154796',
       score: 11.0,
@@ -96,7 +96,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'não deve salvar um filme com o year menor que 0' do
+  test 'should not save a movie with year less than 0' do
     movie = Movie.new(
       imdb: 'tt4154796',
       score: 8.8,
@@ -108,7 +108,7 @@ class MovieTest < ActiveSupport::TestCase
     assert_not movie.save
   end
 
-  test 'deve salvar um filme se os valores estiverem corretos' do
+  test 'should save a movie if the values are correct' do
     movie = Movie.new(
       imdb: 'tt4154796',
       score: 8.8,
@@ -120,7 +120,7 @@ class MovieTest < ActiveSupport::TestCase
     assert movie.save
   end
 
-  test 'não deve salvar um filme com o mesmo imdb' do
+  test 'should not save a movie with the same imdb' do
     Movie.create(
       imdb: 'tt4154796',
       score: -1.0,
