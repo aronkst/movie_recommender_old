@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RecommendedMovieTest < ActiveSupport::TestCase
   test 'should not save an empty recommended movie' do
-    recommended_movie = RecommendedMovie.new()
+    recommended_movie = RecommendedMovie.new
     assert_not recommended_movie.save
   end
 

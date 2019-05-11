@@ -2,7 +2,7 @@ require 'test_helper'
 
 class WatchedMovieTest < ActiveSupport::TestCase
   test 'should not save an empty watched movie' do
-    watched_movie = WatchedMovie.new()
+    watched_movie = WatchedMovie.new
     assert_not watched_movie.save
   end
 
