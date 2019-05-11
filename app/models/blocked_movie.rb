@@ -1,0 +1,2 @@
+class BlockedMovie < ApplicationRecord
+end

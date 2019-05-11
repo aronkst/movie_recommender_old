@@ -1,0 +1,2 @@
+class RecommendedMovie < ApplicationRecord
+end

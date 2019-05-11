@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  imdb: MyString
+  recommended_imdb: MyString
+
+two:
+  imdb: MyString
+  recommended_imdb: MyString
