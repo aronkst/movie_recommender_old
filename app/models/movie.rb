@@ -3,4 +3,5 @@ class Movie < ApplicationRecord
   validates :imdb, uniqueness: true
   validates :score, inclusion: 1..10
   validates :year, numericality: { greater_than: 0 }
+  has_one_attached :image
 end

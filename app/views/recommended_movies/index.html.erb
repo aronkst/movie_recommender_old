@@ -2,17 +2,23 @@
 <p>Find me in app/views/recommended_movies/index.html.erb</p>
 <hr />
 <% @recommended_movies.each do |recommended_movie| %>
-    <%= recommended_movie['title'] %>
+    <%= image_tag recommended_movie['movie'].image %>
     <br /><br />
-    <%= recommended_movie['summary'] %>
+    <%= recommended_movie['movie'].title %>
     <br /><br />
-    <%= recommended_movie['genres'].split(',').join(', ') %>
+    <%= recommended_movie['movie'].summary %>
     <br /><br />
-    <%= recommended_movie['score'] %> - <%= recommended_movie['my_score'] %>
+    <%= recommended_movie['movie'].genres %>
+    <br /><br />
+    <%= recommended_movie['movie'].score %> - <%= recommended_movie['score'] %>
     <br /><br />
     <ul>
-        <% recommended_movie['movies'].each do |movie| %>
-            <li><%= movie['title'] %></li>
+        <% recommended_movie['recommended_by'].each do |movie| %>
+            <li>
+                <%= image_tag movie.image.variant(resize: '60x88') %>
+                <br />
+                <%= movie.title %>
+            </li>
         <% end %>
     </ul>
     <hr />

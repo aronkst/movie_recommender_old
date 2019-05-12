@@ -72,3 +72,5 @@ gem 'sidekiq'
 gem 'rubocop', require: false
 
 gem 'rubycritic', require: false
+
+gem 'image_processing', '~> 1.2'

@@ -23,7 +23,7 @@ class CrawlerMovie
     get_summary(nokogiri)
     get_score(nokogiri)
     get_genres(nokogiri)
-    # get_image(nokogiri)
+    get_image(nokogiri)
     get_recommended_movies(nokogiri)
     @movie
   end
@@ -61,12 +61,8 @@ class CrawlerMovie
   end
 
   def get_genres(nokogiri)
-    all_genres = ""
     genres = nokogiri.xpath("//div[@class='see-more inline canwrap'][2]/a/text()")
-    for genre in genres do
-      all_genres += genre.text.strip + ","
-    end
-    @movie[:genres] = all_genres[0...-1]
+    @movie[:genres] = genres.join(', ')
   rescue
     @movie[:genres] = ""
   end

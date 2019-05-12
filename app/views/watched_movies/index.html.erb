@@ -3,6 +3,8 @@
 <% @watched_movies.each do |watched_movie| %>
     <div class="row">
         <div class="col-11 align-self-center">
+            <%= image_tag watched_movie.movie.image %>
+            <br />
             <%= link_to "https://www.imdb.com/title/#{watched_movie.imdb}", target: "_blank" do %>
                 <%= watched_movie.movie.title %> (<%= watched_movie.movie.year %>)
             <% end %>
