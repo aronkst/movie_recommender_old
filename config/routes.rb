@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'recommended_movies/:imdb/new', to: 'recommended_movies#new', as: 'recommended_movies_new'
   post 'recommended_movies/:imdb/new', to: 'recommended_movies#create', as: 'recommended_movies_create'
 
-  root 'welcome#index'
+  root 'recommended_movies#index'
 
   mount Sidekiq::Web => '/sidekiq'
 
