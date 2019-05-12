@@ -12,16 +12,20 @@ The rating of the recommended movies works with a calculation involving the note
 
 2.6
 
+## Rails version
+5.2
+
 ## System dependencies
 
-Ruby
-Rails
-PostgreSQL
-Redis
-Nokogiri
-Sidekiq
-RuboCop
-RubyCritic
+- Ruby
+- Rails
+- PostgreSQL
+- Redis
+- Nokogiri
+- Sidekiq
+- RuboCop
+- RubyCritic
+- Brakeman
 
 ## Configuration
 
