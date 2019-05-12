@@ -25,11 +25,11 @@ class WatchedMoviesController < ApplicationController
     end
     redirect_to watched_movies_index_path
   end
-  
+
   private
 
   def set_title_index
-    @title = "Watched Movies"
+    @title = 'Watched Movies'
   end
 
   def set_title_edit_update

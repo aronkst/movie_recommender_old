@@ -22,7 +22,7 @@ class MostPopularMoviesController < ApplicationController
   private
 
   def set_title_index
-    @title = "Most Popular Movies"
+    @title = 'Most Popular Movies'
   end
 
   def set_title_new_create
