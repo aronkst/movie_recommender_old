@@ -3,21 +3,21 @@
 <% @recommended_movies.each do |recommended_movie| %>
   <div class="row">
     <div class="col-2 align-self-center">
-      <%= image_tag recommended_movie['movie'].image, class: "img-thumbnail" %>
+      <%= image_tag recommended_movie["movie"].image, class: "img-thumbnail" %>
     </div>
     <div class="col-7 align-self-center">
-      <h5><%= recommended_movie['movie'].title %> (<%= recommended_movie['movie'].year %>)</h5>
-      <span class="badge badge-warning" style="margin-bottom:15px;"><%= recommended_movie['movie'].score %></span>
-      <span class="badge badge-primary" style="margin-bottom:15px;"><%= recommended_movie['score'] %></span>
-      <p><%= recommended_movie['movie'].summary %></p>
-      <p><%= recommended_movie['movie'].genres %></p>
-      <%= link_to "IMDb", "https://www.imdb.com/title/#{recommended_movie['movie'].imdb}/", class: "btn btn-secondary", target: "_blank" %>
-      <%= link_to "Add", recommended_movies_new_path(recommended_movie['movie'].imdb), class: "btn btn-success" %>
-      <%= link_to "Block", recommended_movies_blocked_path(recommended_movie['movie'].imdb), class: "btn btn-danger", method: "delete" %>
+      <h5><%= recommended_movie["movie"].title %> (<%= recommended_movie["movie"].year %>)</h5>
+      <span class="badge badge-warning" style="margin-bottom:15px;"><%= recommended_movie["movie"].score %></span>
+      <span class="badge badge-primary" style="margin-bottom:15px;"><%= recommended_movie["score"] %></span>
+      <p><%= recommended_movie["movie"].summary %></p>
+      <p><%= recommended_movie["movie"].genres %></p>
+      <%= link_to "IMDb", "https://www.imdb.com/title/#{recommended_movie["movie"].imdb}/", class: "btn btn-secondary", target: "_blank" %>
+      <%= link_to "Add", recommended_movies_new_path(recommended_movie["movie"].imdb), class: "btn btn-success" %>
+      <%= link_to "Block", recommended_movies_blocked_path(recommended_movie["movie"].imdb), class: "btn btn-danger", method: "delete" %>
     </div>
     <div class="col-3 align-self-center">
-      <% recommended_movie['recommended_by'].each do |movie| %>
-        <%= image_tag movie.image.variant(resize: '60x88'), class: "img-thumbnail", alt: movie.title %>
+      <% recommended_movie["recommended_by"].each do |movie| %>
+        <%= image_tag movie.image.variant(resize: "60x88"), class: "img-thumbnail", alt: movie.title %>
       <% end %>
     </div>
   </div>
