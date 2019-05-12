@@ -12,7 +12,7 @@ class MostPopularMoviesController < ApplicationController
 
   def create
     @watched_movie = WatchedMovie.new(watched_movie_params)
-    if @wathed_movie.save
+    if @watched_movie.save
       redirect_to watched_movies_index_path
     else
       render 'new'

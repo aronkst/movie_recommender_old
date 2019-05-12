@@ -23,7 +23,7 @@ class CrawlerMovie
     get_summary(nokogiri)
     get_score(nokogiri)
     get_genres(nokogiri)
-    get_image(nokogiri)
+    # get_image(nokogiri)
     get_recommended_movies(nokogiri)
     @movie
   end
