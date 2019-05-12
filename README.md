@@ -1,24 +1,56 @@
-# README
+# Movie Recommender
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a movie recommendation project, using the Ruby programming language, the Rails framework, the PostgreSQL and Redis databases, and various libraries such as Nokogiri, Sidekiq, RuboCop and RubyCritic.
 
-Things you may want to cover:
+A Crawler is used to fetch information from movies on IMDb.
 
-* Ruby version
+The rating of the recommended movies works with a calculation involving the note you gave the movie along with the IMDb rating.
 
-* System dependencies
+**THIS PROJECT IS UNDER DEVELOPMENT.**
 
-* Configuration
+## Ruby version
 
-* Database creation
+2.6
 
-* Database initialization
+## System dependencies
 
-* How to run the test suite
+Ruby
+Rails
+PostgreSQL
+Redis
+Nokogiri
+Sidekiq
+RuboCop
+RubyCritic
 
-* Services (job queues, cache servers, search engines, etc.)
+## Configuration
 
-* Deployment instructions
+Use the Bundle to install the Gems.
 
-* ...
+`bundle install`
+
+## Database creation
+
+Use the commands:
+
+`rails db:create`
+
+`rails db:migrate`
+
+## How to run the test suite
+
+**NOT ALL TESTS HAVE BEEN DEVELOPED YET.**
+
+To run the tests, use the following command:
+
+`rails t`
+
+## Run the application
+
+To run the application use the command:
+
+`rails s`
+
+And also execute the command below to start Sidekiq:
+
+`bundle exec sidekiq -q default -c 8`
