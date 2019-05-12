@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'recommended_movies', to: 'recommended_movies#index', as: 'recommended_movies_index'
   get 'recommended_movies/:imdb/new', to: 'recommended_movies#new', as: 'recommended_movies_new'
   post 'recommended_movies/:imdb/new', to: 'recommended_movies#create', as: 'recommended_movies_create'
+  delete 'recommended_movies/:imdb/blocked', to: 'recommended_movies#blocked', as: 'recommended_movies_blocked'
 
   root 'recommended_movies#index'
 

@@ -1,14 +1,20 @@
 <h1>Blocked Movies</h1>
 <hr />
 <% @blocked_movies.each do |blocked_movie| %>
-    <div class="row">
-        <div class="col-11 align-self-center">
-            <%= link_to "https://www.imdb.com/title/#{blocked_movie.imdb}", target: "_blank" do %>
-                <%= blocked_movie.movie.title %> (<%= blocked_movie.movie.year %>)
-            <% end %>
-            <br />
-            <%= link_to "Remove", blocked_movies_destroy_path(blocked_movie.imdb), class: "btn btn-danger", method: "delete" %>
-        </div>
+  <div class="row">
+    <div class="col-2 align-self-center">
+      <%= image_tag blocked_movie.movie.image, class: "img-thumbnail" %>
     </div>
+    <div class="col-10 align-self-center">
+      <h5><%= blocked_movie.movie.title %> (<%= blocked_movie.movie.year %>)</h5>
+      <span class="badge badge-warning" style="margin-bottom:15px;"><%= blocked_movie.movie.score %></span>
+      <p><%= blocked_movie.movie.summary %></p>
+      <p><%= blocked_movie.movie.genres %></p>
+      <%= link_to "IMDb", "https://www.imdb.com/title/#{blocked_movie.imdb}/", class: "btn btn-secondary", target: "_blank" %>
+      <%= link_to "Unblock", blocked_movies_destroy_path(blocked_movie.imdb), class: "btn btn-primary", method: "delete" %>
+    </div>
+  </div>
+  <% unless @blocked_movies.last == blocked_movie %>
     <hr />
+  <% end %>
 <% end %>

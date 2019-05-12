@@ -1,12 +1,22 @@
-<h1>Add <%= params[:title] %></h1>
+<h1>Add an watched movie: <small class="text-muted"><%= params[:title] %></small></h1>
 <hr />
 <%= form_for @watched_movie, url: most_popular_movies_create_path(params[:imdb], title: params[:title]) do |f| %>
-    <%= f.hidden_field :imdb %>
-    
-    <div class="form-group">
-        <%= f.label(:score, "Score:") %>
-        <%= f.select :score, [1,2,3,4,5,6,7,8,9,10], {}, class: "form-control" %>
+  <% if @watched_movie.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <ul style="margin-bottom:0;">
+        <% @watched_movie.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
+  <% end %>
 
-    <%= f.submit "Add", class: "btn btn-success" %>
+  <%= f.hidden_field :imdb %>
+
+  <div class="form-group">
+      <%= f.label(:score, "Score:") %>
+      <%= f.select :score, [1,2,3,4,5,6,7,8,9,10], {}, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Add", class: "btn btn-success" %>
 <% end %>

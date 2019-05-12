@@ -1,10 +1,10 @@
 class WatchedMoviesController < ApplicationController
+  before_action :load_movie, only: [:edit, :update]
   before_action :set_title_index, only: :index
   before_action :set_title_edit_update, only: [:edit, :update]
-  before_action :load_movie, only: [:edit, :update]
 
   def index
-    @watched_movies = WatchedMovie.includes(:movie).all
+    @watched_movies = WatchedMovie.includes(:movie).all.order(score: :desc)
   end
 
   def edit
@@ -19,7 +19,7 @@ class WatchedMoviesController < ApplicationController
   end
 
   def destroy
-    watched_movie = WatchedMovie.find_by_imdb(params[:imdb])
+    watched_movie = WatchedMovie.find_by_imdb!(params[:imdb])
     unless watched_movie.delete
       flash[:error] = 'Unable to remove this movie from your watched movies'
     end
@@ -37,7 +37,7 @@ class WatchedMoviesController < ApplicationController
   end
 
   def load_movie
-    @watched_movie = WatchedMovie.includes(:movie).find_by_imdb(params[:imdb])
+    @watched_movie = WatchedMovie.includes(:movie).find_by_imdb!(params[:imdb])
   end
 
   def watched_movie_params

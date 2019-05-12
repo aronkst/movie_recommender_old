@@ -12,8 +12,9 @@ class CreateMovieJob < ApplicationJob
     movie.summary = crawler[:summary]
     movie.year = crawler[:year]
     movie.genres = crawler[:genres]
-    movie.save
-    movie.image.attach(io: open(crawler[:image]), filename: "#{imdb}.jpg")
+    if movie.save
+      movie.image.attach(io: open(crawler[:image]), filename: "#{imdb}.jpg")
+    end
     movie
   end
 end

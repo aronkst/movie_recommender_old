@@ -1,22 +1,22 @@
 <h1>Watched Movies</h1>
 <hr />
 <% @watched_movies.each do |watched_movie| %>
-    <div class="row">
-        <div class="col-11 align-self-center">
-            <%= image_tag watched_movie.movie.image %>
-            <br />
-            <%= link_to "https://www.imdb.com/title/#{watched_movie.imdb}", target: "_blank" do %>
-                <%= watched_movie.movie.title %> (<%= watched_movie.movie.year %>)
-            <% end %>
-            <br />
-            <span class="badge badge-warning"><%= watched_movie.movie.score %></span>
-            <span class="badge badge-warning"><%= watched_movie.score %></span>
-            <br />
-            <p><%= watched_movie.movie.summary %></p>
-            <p><%= watched_movie.movie.genres.split(',').join(', ') %></p>
-            <%= link_to "Edit", watched_movies_edit_path(watched_movie.imdb), class: "btn btn-info" %>
-            <%= link_to "Remove", watched_movies_destroy_path(watched_movie.imdb), class: "btn btn-danger", method: "delete" %>
-        </div>
+  <div class="row">
+    <div class="col-2 align-self-center">
+      <%= image_tag watched_movie.movie.image, class: "img-thumbnail" %>
     </div>
+    <div class="col-10 align-self-center">
+      <h5><%= watched_movie.movie.title %> (<%= watched_movie.movie.year %>)</h5>
+      <span class="badge badge-warning" style="margin-bottom:15px;"><%= watched_movie.movie.score %></span>
+      <span class="badge badge-primary" style="margin-bottom:15px;"><%= watched_movie.score %></span>
+      <p><%= watched_movie.movie.summary %></p>
+      <p><%= watched_movie.movie.genres.split(',').join(', ') %></p>
+      <%= link_to "IMDb", "https://www.imdb.com/title/#{watched_movie.imdb}/", class: "btn btn-secondary", target: "_blank" %>
+      <%= link_to "Edit", watched_movies_edit_path(watched_movie.imdb), class: "btn btn-primary" %>
+      <%= link_to "Remove", watched_movies_destroy_path(watched_movie.imdb), class: "btn btn-danger", method: "delete" %>
+    </div>
+  </div>
+  <% unless @watched_movies.last == watched_movie %>
     <hr />
+  <% end %>
 <% end %>

@@ -62,7 +62,7 @@ class CrawlerMovie
 
   def get_genres(nokogiri)
     genres = nokogiri.xpath("//div[@class='see-more inline canwrap'][2]/a/text()")
-    @movie[:genres] = genres.join(', ')
+    @movie[:genres] = genres.to_a.join(', ')
   rescue
     @movie[:genres] = ""
   end

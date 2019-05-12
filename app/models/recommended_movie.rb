@@ -23,10 +23,10 @@ class RecommendedMovie < ApplicationRecord
       result[grouped]['recommended_by'] = []
       score = 0.0
       values.each do |value|
-        movie = movies.detect { |m| m.imdb == value.imdb }
-        result[grouped]['recommended_by'].push(movie)
+        value_movie = movies.detect { |m| m.imdb == value.imdb }
+        result[grouped]['recommended_by'].push(value_movie)
         watched_movie = watched_movies.detect { |m| m.imdb == value.imdb }
-        score += movie.score * watched_movie.score
+        score += value_movie.score * watched_movie.score
       end
       result[grouped]['score'] = score * movie.score
       result[grouped]['score'] = result[grouped]['score'].to_i
