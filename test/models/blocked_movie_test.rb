@@ -7,7 +7,7 @@ class BlockedMovieTest < ActiveSupport::TestCase
   end
 
   test 'should save a locked movie with an imdb' do
-    blocked_movie = BlockedMovie.new(imdb: 'tt4154796')
+    blocked_movie = BlockedMovie.new(imdb: 'tt4154756')
     assert blocked_movie.save
   end
 

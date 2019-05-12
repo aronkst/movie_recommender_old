@@ -7,7 +7,7 @@ class WatchedMovieTest < ActiveSupport::TestCase
   end
 
   test 'should not save a watched movie only with the imdb column' do
-    watched_movie = WatchedMovie.new(imdb: 'tt4154796')
+    watched_movie = WatchedMovie.new(imdb: 'tt4154756')
     assert_not watched_movie.save
   end
 
@@ -22,18 +22,18 @@ class WatchedMovieTest < ActiveSupport::TestCase
   end
 
   test 'should not save a movie with a score less than 1' do
-    watched_movie = WatchedMovie.new(imdb: 'tt4154796', score: 0)
+    watched_movie = WatchedMovie.new(imdb: 'tt4154664', score: 0)
     assert_not watched_movie.save
   end
 
   test 'deve salvar um filme assistido se os valores estiverem corretos' do
-    watched_movie = WatchedMovie.new(imdb: 'tt4154796', score: 10)
+    watched_movie = WatchedMovie.new(imdb: 'tt3501632', score: 10)
     assert watched_movie.save
   end
 
   test 'should not save an assisted movie with an already saved imdb' do
-    WatchedMovie.create(imdb: 'tt4154796', score: 10)
-    watched_movie = WatchedMovie.new(imdb: 'tt4154796', score: 10)
+    WatchedMovie.create(imdb: 'tt0848228', score: 10)
+    watched_movie = WatchedMovie.new(imdb: 'tt0848228', score: 10)
     assert_not watched_movie.save
   end
 end
