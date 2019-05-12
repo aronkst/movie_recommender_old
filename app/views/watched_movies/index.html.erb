@@ -13,7 +13,7 @@
             <p><%= watched_movie.movie.summary %></p>
             <p><%= watched_movie.movie.genres.split(',').join(', ') %></p>
             <%= link_to "Edit", watched_movies_edit_path(watched_movie.imdb), class: "btn btn-info" %>
-            <%= link_to "Remove", watched_movies_delete_path(watched_movie.imdb), class: "btn btn-danger", method: "delete" %>
+            <%= link_to "Remove", watched_movies_destroy_path(watched_movie.imdb), class: "btn btn-danger", method: "delete" %>
         </div>
     </div>
     <hr />

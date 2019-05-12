@@ -5,7 +5,7 @@ class BlockedMoviesController < ApplicationController
     @blocked_movies = BlockedMovie.includes(:movie).all
   end
 
-  def delete
+  def destroy
     blocked_movie = BlockedMovie.find_by_imdb(params[:imdb])
     unless blocked_movie.delete
       flash[:error] = 'Unable to remove this movie from your blocked movies'

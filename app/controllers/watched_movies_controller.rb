@@ -18,7 +18,7 @@ class WatchedMoviesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     watched_movie = WatchedMovie.find_by_imdb(params[:imdb])
     unless watched_movie.delete
       flash[:error] = 'Unable to remove this movie from your watched movies'

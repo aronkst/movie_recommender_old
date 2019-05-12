@@ -7,7 +7,7 @@
                 <%= blocked_movie.movie.title %> (<%= blocked_movie.movie.year %>)
             <% end %>
             <br />
-            <%= link_to "Remove", blocked_movies_delete_path(blocked_movie.imdb), class: "btn btn-danger", method: "delete" %>
+            <%= link_to "Remove", blocked_movies_destroy_path(blocked_movie.imdb), class: "btn btn-danger", method: "delete" %>
         </div>
     </div>
     <hr />
