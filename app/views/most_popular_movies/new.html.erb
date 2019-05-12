@@ -1,2 +1,12 @@
-<h1>MostPopularMovies#new</h1>
-<p>Find me in app/views/most_popular_movies/new.html.erb</p>
+<h1>Add <%= params[:title] %></h1>
+<hr />
+<%= form_for @wathed_movie, url: recommended_movies_create_path(params[:imdb], title: params[:title]) do |f| %>
+    <%= f.hidden_field :imdb %>
+    
+    <div class="form-group">
+        <%= f.label(:score, "Score:") %>
+        <%= f.select :score, [1,2,3,4,5,6,7,8,9,10], {}, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Add", class: "btn btn-success" %>
+<% end %>
