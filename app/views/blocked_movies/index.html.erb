@@ -1,2 +1,19 @@
-<h1>BlockedMovies#index</h1>
-<p>Find me in app/views/blocked_movies/index.html.erb</p>
+<h1>Blocked Movies</h1>
+<hr />
+<% @blocked_movies.each do |blocked_movie| %>
+    <div class="row">
+        <div class="col-1 align-self-center">
+            <div class="text-center">
+                <%= image_tag blocked_movie.movie.image, class: "img-thumbnail" %>
+            </div>
+        </div>
+        <div class="col-11 align-self-center">
+            <%= link_to "https://www.imdb.com/title/#{blocked_movie.imdb}", target: "_blank" do %>
+                <%= blocked_movie.movie.title %> (<%= blocked_movie.movie.year %>)
+            <% end %>
+            <br />
+            <%= link_to "Remove", blocked_movies_delete_path(blocked_movie.imdb), class: "btn btn-danger", method: "delete" %>
+        </div>
+    </div>
+    <hr />
+<% end %>
