@@ -11,7 +11,7 @@ class MostPopularMoviesController < ApplicationController
   end
 
   def create
-    @watched_movie = WatchedMovie.new(wathed_movie_params)
+    @watched_movie = WatchedMovie.new(watched_movie_params)
     if @wathed_movie.save
       redirect_to watched_movies_index_path
     else
@@ -29,7 +29,7 @@ class MostPopularMoviesController < ApplicationController
     @title = "Add #{params[:title]}"
   end
 
-  def wathed_movie_params
+  def watched_movie_params
     params.require(:watched_movie).permit(:imdb, :score)
   end
 end

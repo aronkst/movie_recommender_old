@@ -1,2 +1,19 @@
-<h1>Search#index</h1>
-<p>Find me in app/views/search/index.html.erb</p>
+<h1>Search: <%= params[:search] %></h1>
+<hr />
+<% @movies.each do |movie| %>
+    <div class="row">
+        <div class="col-1 align-self-center">
+            <div class="text-center">
+                <%= image_tag movie[:image], class: "img-thumbnail" %>
+            </div>
+        </div>
+        <div class="col-11 align-self-center">
+            <%= link_to "https://www.imdb.com/title/#{movie[:imdb]}", target: "_blank" do %>
+                <%= movie[:title] %> (<%= movie[:year] %>)
+            <% end %>
+            <br />
+            <%= link_to "Add", search_new_path(movie[:imdb], title: movie[:title]), class: "btn btn-success btn-sm" %>
+        </div>
+    </div>
+    <hr />
+<% end %>

@@ -1,6 +1,6 @@
 <h1>Add <%= params[:title] %></h1>
 <hr />
-<%= form_for @wathed_movie, url: recommended_movies_create_path(params[:imdb], title: params[:title]) do |f| %>
+<%= form_for @watched_movie, url: recommended_movies_create_path(params[:imdb], title: params[:title]) do |f| %>
     <%= f.hidden_field :imdb %>
     
     <div class="form-group">
