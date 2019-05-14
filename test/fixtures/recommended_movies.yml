@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  imdb: MyString
-  recommended_imdb: MyString
-
-two:
-  imdb: MyString
-  recommended_imdb: MyString
+  imdb: tt6966692
+  recommended_imdb: tt1727824

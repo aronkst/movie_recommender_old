@@ -1,17 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  imdb: MyString
-  score: 1.5
-  title: MyString
-  summary: MyText
-  year: 1
-  genres: MyString
+  imdb: tt6966692
+  score: 8.3
+  title: Green Book
+  summary: A working-class Italian-American bouncer becomes the driver of an African-American classical pianist on a tour of venues through the 1960s American South.
+  year: 2018
+  genres: Biography, Comedy, Drama
 
 two:
-  imdb: MyString
-  score: 1.5
-  title: MyString
-  summary: MyText
-  year: 1
-  genres: MyString
+  imdb: tt1727824
+  score: 8.1
+  title: Bohemian Rhapsody
+  summary: The story of the legendary rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).
+  year: 2018
+  genres: Biography, Drama, Music
+
+three:
+  imdb: tt1517451
+  score: 7.8
+  title: A Star Is Born
+  summary: A musician helps a young singer find fame as age and alcoholism send his own career into a downward spiral.
+  year: 2018
+  genres: Drama, Music, Romance

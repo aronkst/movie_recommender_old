@@ -7,7 +7,7 @@ class WatchedMoviesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    get watched_movies_edit_url
+    get watched_movies_edit_url('tt6966692')
     assert_response :success
   end
 

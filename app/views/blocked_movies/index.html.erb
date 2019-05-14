@@ -3,7 +3,7 @@
 <% @blocked_movies.each do |blocked_movie| %>
   <div class="row">
     <div class="col-2 align-self-center">
-      <%= image_tag blocked_movie.movie.image, class: "img-thumbnail" %>
+      <%= image_tag(blocked_movie.movie.image, class: "img-thumbnail") if blocked_movie.movie.image.attached? %>
     </div>
     <div class="col-10 align-self-center">
       <h5><%= blocked_movie.movie.title %> (<%= blocked_movie.movie.year %>)</h5>

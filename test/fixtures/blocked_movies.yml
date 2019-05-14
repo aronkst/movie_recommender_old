@@ -1,7 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  imdb: MyString
-
-two:
-  imdb: MyString
+  imdb: tt1517451

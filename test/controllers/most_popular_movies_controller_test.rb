@@ -7,7 +7,7 @@ class MostPopularMoviesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get most_popular_movies_new_url
+    get most_popular_movies_new_url('tt6155172')
     assert_response :success
   end
 
