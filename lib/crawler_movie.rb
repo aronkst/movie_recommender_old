@@ -2,86 +2,97 @@ require 'nokogiri'
 require 'open-uri'
 
 class CrawlerMovie
-  def initialize(imdb)
-    @imdb = imdb
-    @movie = {}
-    create
+  def initialize
+    @imdb = nil
+    @movie = nil
   end
 
-  def load
+  def load(imdb)
+    @imdb = imdb
+    @movie = {}
+    create!
     @movie
   end
 
   private
 
-  def create
+  def load_site
     html = open("https://www.imdb.com/title/#{@imdb}/").read
-    nokogiri = Nokogiri::HTML(html)
+    Nokogiri::HTML(html)
+  end
+
+  def create!
+    nokogiri = load_site
+    imdb
+    title(nokogiri)
+    year(nokogiri)
+    summary(nokogiri)
+    score(nokogiri)
+    genres(nokogiri)
+    image(nokogiri)
+    recommended_movies(nokogiri)
+  end
+
+  def imdb
     @movie[:imdb] = @imdb
-    get_title(nokogiri)
-    get_year(nokogiri)
-    get_summary(nokogiri)
-    get_score(nokogiri)
-    get_genres(nokogiri)
-    get_image(nokogiri)
-    get_recommended_movies(nokogiri)
-    @movie
   end
 
-  def get_title(nokogiri)
-    title = nokogiri.xpath("//meta[@property='og:title']/@content")
-    title = title[0].text.strip
-    @movie[:title] = title.gsub(" - IMDb", "").gsub(/\s*\(.+\)$/, "")
-  rescue
-    @movie[:title] = ""
+  def title(nokogiri)
+    title = nokogiri.xpath("//meta[@property='og:title']/@content")[0].text
+    title = title.strip
+    title = title.gsub(' - IMDb', '')
+    @movie[:title] = title.gsub(/\s*\(.+\)$/, '')
+  rescue StandardError
+    @movie[:title] = ''
   end
 
-  def get_year(nokogiri)
-    year = nokogiri.xpath("//h1/span[@id='titleYear']/a/text()")
-    year = year[0].text.strip
-    year = year.gsub("(", "").gsub(")", "")
+  def year(nokogiri)
+    year = nokogiri.xpath("//h1/span[@id='titleYear']/a/text()")[0].text
+    year = year.strip
+    year = year.gsub('(', '')
+    year = year.gsub(')', '')
     @movie[:year] = year.to_i
-  rescue
+  rescue StandardError
     @movie[:year] = 0
   end
 
-  def get_summary(nokogiri)
-    summary = nokogiri.xpath("//div[@class='summary_text']/text()")
-    @movie[:summary] = summary[0].text.strip
-  rescue
-    @movie[:summary] = ""
+  def summary(nokogiri)
+    summary = nokogiri.xpath("//div[@class='summary_text']/text()")[0].text
+    @movie[:summary] = summary.strip
+  rescue StandardError
+    @movie[:summary] = ''
   end
 
-  def get_score(nokogiri)
-    score = nokogiri.xpath("//div[@class='ratingValue']/strong/span[@itemprop='ratingValue']/text()")
-    score = score[0].text.strip
+  def score(nokogiri)
+    xpath = "//div[@class='ratingValue']/strong/" \
+            "span[@itemprop='ratingValue']/text()"
+    score = nokogiri.xpath(xpath)[0].text
+    score = score.strip
     @movie[:score] = score.to_f
-  rescue
+  rescue StandardError
     @movie[:score] = 0.0
   end
 
-  def get_genres(nokogiri)
-    genres = nokogiri.xpath("//div[@class='see-more inline canwrap'][2]/a/text()")
-    @movie[:genres] = genres.to_a.join(', ')
-  rescue
-    @movie[:genres] = ""
+  def genres(nokogiri)
+    xpath = "//div[@class='see-more inline canwrap'][2]/a/text()"
+    genres = nokogiri.xpath(xpath).to_a
+    @movie[:genres] = genres.join(', ')
+  rescue StandardError
+    @movie[:genres] = ''
   end
 
-  def get_image(nokogiri)
-    image = nokogiri.xpath("//div[@class='poster']/a/img/@src")
-    @movie[:image] = image[0].text.strip
-  rescue
-    @movie[:image] = ""
+  def image(nokogiri)
+    image = nokogiri.xpath("//div[@class='poster']/a/img/@src")[0].text
+    @movie[:image] = image.strip
+  rescue StandardError
+    @movie[:image] = ''
   end
 
-  def get_recommended_movies(nokogiri)
-    all_recommended_movies = ""
-    recommended_movies = nokogiri.xpath("//div[@class='rec_item']/@data-tconst")
-    for recommended_movie in recommended_movies do
-      all_recommended_movies += recommended_movie.text.strip + ","
-    end
-    @movie[:recommended_movies] = all_recommended_movies[0..-1]
-  rescue
-    @movie[:recommended_movies] = ""
+  def recommended_movies(nokogiri)
+    xpath = "//div[@class='rec_item']/@data-tconst"
+    recommended_movies = nokogiri.xpath(xpath).to_a
+    @movie[:recommended_movies] = recommended_movies.join(', ')
+  rescue StandardError
+    @movie[:recommended_movies] = ''
   end
 end

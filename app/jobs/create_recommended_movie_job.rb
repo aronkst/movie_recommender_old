@@ -2,7 +2,7 @@ class CreateRecommendedMovieJob < ApplicationJob
   queue_as :default
 
   def perform(imdb)
-    crawler = CrawlerMovie.new(imdb).load
+    crawler = CrawlerMovie.new.load(imdb)
     movies = crawler[:recommended_movies].split(',')
     movies.each do |movie|
       RecommendedMovie.create(imdb: imdb, recommended_imdb: movie)

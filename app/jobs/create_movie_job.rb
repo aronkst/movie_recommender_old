@@ -4,7 +4,7 @@ class CreateMovieJob < ApplicationJob
   queue_as :default
 
   def perform(imdb)
-    crawler = CrawlerMovie.new(imdb).load
+    crawler = CrawlerMovie.new.load(imdb)
     movie = Movie.new
     movie.imdb = imdb
     movie.score = crawler[:score]

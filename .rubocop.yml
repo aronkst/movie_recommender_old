@@ -1,6 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.6
-  DisabledByDefault: true
+  DisabledByDefault: false
   Exclude:
     - 'db/schema.rb'
     - 'log/**/*'
