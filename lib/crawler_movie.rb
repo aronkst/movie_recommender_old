@@ -91,7 +91,7 @@ class CrawlerMovie
   def recommended_movies(nokogiri)
     xpath = "//div[@class='rec_item']/@data-tconst"
     recommended_movies = nokogiri.xpath(xpath).to_a
-    @movie[:recommended_movies] = recommended_movies.join(', ')
+    @movie[:recommended_movies] = recommended_movies.join(',')
   rescue StandardError
     @movie[:recommended_movies] = ''
   end

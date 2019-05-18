@@ -26,7 +26,7 @@ class WatchedMovieTest < ActiveSupport::TestCase
     assert_not watched_movie.save
   end
 
-  test 'deve salvar um filme assistido se os valores estiverem corretos' do
+  test 'should save an watched movie of the values are correct' do
     watched_movie = WatchedMovie.new(imdb: 'tt3501632', score: 10)
     assert watched_movie.save
   end

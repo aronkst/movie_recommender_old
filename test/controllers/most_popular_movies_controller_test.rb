@@ -1,14 +1,13 @@
 require 'test_helper'
 
 class MostPopularMoviesControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
+  test 'should get index' do
     get most_popular_movies_index_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get most_popular_movies_new_url('tt6155172')
     assert_response :success
   end
-
 end

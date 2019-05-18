@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   before_action :set_title_new_create, except: :index
 
   def index
-    @movies = CrawlerSearchMovie.new(params[:search]).load
+    @movies = CrawlerSearchMovie.new.load(params[:search])
   end
 
   def new

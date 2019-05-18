@@ -1,14 +1,13 @@
 class WatchedMoviesController < ApplicationController
-  before_action :load_movie, only: [:edit, :update]
+  before_action :load_movie, only: %i[edit update]
   before_action :set_title_index, only: :index
-  before_action :set_title_edit_update, only: [:edit, :update]
+  before_action :set_title_edit_update, only: %i[edit update]
 
   def index
     @watched_movies = WatchedMovie.includes(:movie).all.order(score: :desc)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @watched_movie.update(watched_movie_params)

@@ -2,56 +2,66 @@ require 'nokogiri'
 require 'open-uri'
 
 class CrawlerSearchMovie
-  def initialize(search)
-    @search = search.gsub(" ", "+")
-    @movies = []
-    create
+  def initialize
+    @search = nil
+    @movies = nil
   end
 
-  def load
-    @movies
+  def load(search)
+    @search = search.gsub(' ', '+')
+    @movies = []
+    create!
+    @movies.sort_by { |h| -h[:year] }
   end
 
   private
 
-  def create
-    html = open("https://www.imdb.com/find?q=#{@search}&s=tt&ttype=ft").read
-    nokogiri = Nokogiri::HTML(html)
+  def create!
+    nokogiri = load_site
     movies = nokogiri.xpath('//tr[contains(@class, "findResult")]')
-    for movie in movies do
-      movie_info = {}
-      movie_info[:imdb] = get_imdb(movie)
-      movie_info[:title] = get_title(movie)
-      movie_info[:year] = get_year(movie)
-      movie_info[:image] = get_image(movie)
-      @movies.push(movie_info)
+    movies.each do |movie|
+      @movies.append(
+        imdb: imdb(movie),
+        title: title(movie),
+        year: year(movie),
+        image: image(movie)
+      )
     end
   end
 
-  def get_title(movie)
-    movie.xpath('.//td[@class="result_text"]/a/text()')[0].text.strip
-  rescue
-    ""
+  def load_site
+    html = open("https://www.imdb.com/find?q=#{@search}&s=tt&ttype=ft").read
+    Nokogiri::HTML(html)
   end
 
-  def get_year(movie)
+  def title(movie)
+    title = movie.xpath('.//td[@class="result_text"]/a/text()')[0].text
+    title.strip
+  rescue StandardError
+    ''
+  end
+
+  def year(movie)
     year = movie.xpath('.//td[@class="result_text"]/text()')[1].text.strip
-    year = year.gsub("(", "").gsub(")", "")
+    year = year.gsub('(', '')
+    year = year.gsub(')', '')
     year.to_i
-  rescue
+  rescue StandardError
     0
   end
 
-  def get_image(movie)
-    movie.xpath(".//img/@src")[0].text
-  rescue
-    ""
+  def image(movie)
+    movie.xpath('.//img/@src')[0].text
+  rescue StandardError
+    nil
   end
 
-  def get_imdb(movie)
+  def imdb(movie)
     imdb = movie.xpath('.//td[@class="result_text"]/a/@href')[0].text
-    imdb[0..16].gsub("/title/", "").gsub("/", "")
-  rescue
-    ""
+    imdb = imdb[0..16]
+    imdb = imdb.gsub('/title/', '')
+    imdb.gsub('/', '')
+  rescue StandardError
+    ''
   end
 end

@@ -1,6 +1,6 @@
 class RecommendedMoviesController < ApplicationController
   before_action :set_title_index, only: :index
-  before_action :set_title_new_create, only: [:new, :create]
+  before_action :set_title_new_create, only: %i[new create]
 
   def index
     @recommended_movies = RecommendedMovie.movies
