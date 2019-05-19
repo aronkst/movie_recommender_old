@@ -1,4 +1,0 @@
-{
-    "ruby.rubocop.executePath": "/home/aron/.rbenv/shims/",
-    "ruby.rubocop.onSave": true
-  }
