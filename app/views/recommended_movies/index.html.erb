@@ -3,7 +3,7 @@
 <% @recommended_movies.each do |recommended_movie| %>
   <div class="row">
     <div class="col-2 align-self-center">
-      <%= image_tag(recommended_movie["movie"].image, class: "img-thumbnail") if recommended_movie["movie"].image.attached? %>
+      <%= show_poster(recommended_movie["movie"]) %>
     </div>
     <div class="col-7 align-self-center">
       <h5><%= recommended_movie["movie"].title %> (<%= recommended_movie["movie"].year %>)</h5>
@@ -17,7 +17,7 @@
     </div>
     <div class="col-3 align-self-center">
       <% recommended_movie["recommended_by"].each do |movie| %>
-        <%= image_tag(movie.image.variant(resize: "60x88"), class: "img-thumbnail") if movie.image.attached? %>
+        <%= show_poster(movie, variant='60x88') %>
       <% end %>
     </div>
   </div>
