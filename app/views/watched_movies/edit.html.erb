@@ -1,22 +1,5 @@
 <h1>Edit an watched movie: <small class="text-muted"><%= @watched_movie.movie.title %></small></h1>
 <hr />
 <%= form_for @watched_movie, url: watched_movies_update_path(@watched_movie.imdb), method: "patch" do |f| %>
-  <% if @watched_movie.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <ul style="margin-bottom:0;">
-        <% @watched_movie.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.hidden_field :imdb %>
-
-  <div class="form-group">
-      <%= f.label(:score, "Score:") %>
-      <%= f.select :score, [1,2,3,4,5,6,7,8,9,10], {}, class: "form-control" %>
-  </div>
-
-  <%= f.submit "Edit", class: "btn btn-primary" %>
+  <%= render partial: "form", locals: { f: f, watched_movie: @watched_movie } %>
 <% end %>

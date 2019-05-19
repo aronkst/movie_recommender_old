@@ -7,7 +7,7 @@ module ApplicationHelper
     end
   end
 
-  def show_poster(model, css_class = 'img-thumbnail', variant = nil)
+  def show_poster(model, variant = nil)
     return if model.nil?
 
     return if model.image.nil?
@@ -15,9 +15,9 @@ module ApplicationHelper
     return unless model.image.attached?
 
     if variant.nil?
-      image_tag(model.image, class: css_class)
+      image_tag(model.image, class: 'img-thumbnail')
     else
-      image_tag(model.image.variant(resize: variant), class: css_class)
+      image_tag(model.image.variant(resize: variant), class: 'img-thumbnail')
     end
   end
 end

@@ -1,6 +1,6 @@
 <h1>Most Popular Movies</h1>
 <hr />
-<% @most_popular_movies.each do |movie| %>
+<% @movies.each do |movie| %>
   <div class="row">
     <div class="col-1 align-self-center">
       <div class="text-center">
@@ -12,10 +12,10 @@
       <span class="badge badge-warning" style="margin-bottom:15px;"><%= movie[:score] %></span>
       <br />
       <%= link_to "IMDb", "https://www.imdb.com/title/#{movie[:imdb]}/", target: "_blank", class: "btn btn-secondary" %>
-      <%= link_to "Add", most_popular_movies_new_path(movie[:imdb], title: movie[:title]), class: "btn btn-success" %>
+      <%= link_to "Add", watched_movies_new_path(movie[:imdb], title: movie[:title]), class: "btn btn-success" %>
     </div>
   </div>
-  <% unless @most_popular_movies.last == movie %>
+  <% unless @movies.last == movie %>
     <hr />
   <% end %>
 <% end %>

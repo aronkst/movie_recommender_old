@@ -5,9 +5,4 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
     get search_index_url(search: 'star wars')
     assert_response :success
   end
-
-  test 'should get new' do
-    get search_new_url('tt0076759')
-    assert_response :success
-  end
 end

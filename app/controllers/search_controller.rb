@@ -1,35 +1,21 @@
 class SearchController < ApplicationController
-  before_action :set_title_index, only: :index
-  before_action :set_title_new_create, except: :index
+  before_action :check_params_search, only: :index
+  before_action :title_index, only: :index
 
   def index
     @movies = CrawlerSearchMovie.new.load(params[:search])
   end
 
-  def new
-    @watched_movie = WatchedMovie.new(imdb: params[:imdb])
-  end
-
-  def create
-    @watched_movie = WatchedMovie.new(watched_movie_params)
-    if @watched_movie.save
-      redirect_to watched_movies_index_path
-    else
-      render 'new'
-    end
-  end
-
   private
 
-  def set_title_index
+  def check_params_search
+    return unless params[:search].nil? || params[:search].strip.empty?
+
+    flash[:error] = 'Could not search because the search word was not found'
+    redirect_to root_path
+  end
+
+  def title_index
     @title = "Search By #{params[:search]}"
-  end
-
-  def set_title_new_create
-    @title = "Add #{params[:title]}"
-  end
-
-  def watched_movie_params
-    params.require(:watched_movie).permit(:imdb, :score)
   end
 end

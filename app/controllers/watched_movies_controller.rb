@@ -1,10 +1,24 @@
 class WatchedMoviesController < ApplicationController
-  before_action :load_movie, only: %i[edit update]
-  before_action :set_title_index, only: :index
-  before_action :set_title_edit_update, only: %i[edit update]
+  before_action :movie_edit_update_destroy, only: %i[edit update destroy]
+  before_action :title_index, only: :index
+  before_action :title_new_create, only: %i[new create]
+  before_action :title_edit_update, only: %i[edit update]
 
   def index
     @watched_movies = WatchedMovie.includes(:movie).all.order(score: :desc)
+  end
+
+  def new
+    @watched_movie = WatchedMovie.new(imdb: params[:imdb])
+  end
+
+  def create
+    @watched_movie = WatchedMovie.new(watched_movie_params)
+    if @watched_movie.save
+      redirect_to watched_movies_index_path
+    else
+      render 'new'
+    end
   end
 
   def edit; end
@@ -18,8 +32,7 @@ class WatchedMoviesController < ApplicationController
   end
 
   def destroy
-    watched_movie = WatchedMovie.find_by_imdb!(params[:imdb])
-    unless watched_movie.delete
+    unless @watched_movie.delete
       flash[:error] = 'Unable to remove this movie from your watched movies'
     end
     redirect_to watched_movies_index_path
@@ -27,15 +40,19 @@ class WatchedMoviesController < ApplicationController
 
   private
 
-  def set_title_index
+  def title_index
     @title = 'Watched Movies'
   end
 
-  def set_title_edit_update
+  def title_new_create
+    @title = "Add #{params[:title]}"
+  end
+
+  def title_edit_update
     @title = "Edit #{@watched_movie.movie.title}"
   end
 
-  def load_movie
+  def movie_edit_update_destroy
     @watched_movie = WatchedMovie.includes(:movie).find_by_imdb!(params[:imdb])
   end
 
