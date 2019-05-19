@@ -78,3 +78,5 @@ gem 'rubocop', require: false, group: :development
 gem 'rubycritic', require: false, group: :development
 
 gem 'brakeman', group: :development
+
+gem 'simplecov', require: false, group: :test
