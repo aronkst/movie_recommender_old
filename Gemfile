@@ -77,3 +77,7 @@ gem 'rubycritic', require: false, group: :development
 gem 'brakeman', group: :development
 
 gem 'simplecov', require: false, group: :test
+
+gem 'bootstrap', '~> 4.3.1'
+
+gem 'jquery-rails'
