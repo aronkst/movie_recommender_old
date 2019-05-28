@@ -10,14 +10,12 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <%= link_to "Recommended Movies", recommended_movies_index_path, class: "navbar-brand" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item <%= navbar_item_active("recommended_movies") %>">
-              <%= link_to "Recommended Movies", recommended_movies_index_path, class: "nav-link" %>
-            </li>
             <li class="nav-item <%= navbar_item_active("watched_movies") %>">
               <%= link_to "Watched Movies", watched_movies_index_path, class: "nav-link" %>
             </li>
@@ -28,10 +26,7 @@
               <%= link_to "Most Popular Movies", most_popular_movies_index_path, class: "nav-link" %>
             </li>
           </ul>
-          <%= form_tag(search_index_path, method: "get", class: "form-inline my-2 my-lg-0") do %>
-            <%= text_field_tag(:search, "", class: "form-control mr-sm-2", placeholder: "...") %>
-            <%= submit_tag("Search", class: "btn btn-light my-2 my-sm-0") %>
-          <% end %>
+          <%= link_to "Search", search_index_path, class: "btn btn-light" %>
         </div>
       </nav>
     </header>

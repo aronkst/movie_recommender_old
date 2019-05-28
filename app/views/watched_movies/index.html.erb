@@ -7,8 +7,8 @@
     </div>
     <div class="col-10 align-self-center">
       <h5><%= watched_movie.movie.title %> (<%= watched_movie.movie.year %>)</h5>
-      <span class="badge badge-warning" style="margin-bottom:15px;"><%= watched_movie.movie.score %></span>
-      <span class="badge badge-primary" style="margin-bottom:15px;"><%= watched_movie.score %></span>
+      <span class="badge badge-warning score-margin-bottom-15px"><%= watched_movie.movie.score %></span>
+      <span class="badge badge-primary score-margin-bottom-15px"><%= watched_movie.score %></span>
       <p><%= watched_movie.movie.summary %></p>
       <p><%= watched_movie.movie.genres.split(",").join(", ") %></p>
       <%= link_to "IMDb", "https://www.imdb.com/title/#{watched_movie.imdb}/", class: "btn btn-secondary", target: "_blank" %>

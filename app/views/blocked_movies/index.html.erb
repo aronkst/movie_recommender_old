@@ -7,7 +7,7 @@
     </div>
     <div class="col-10 align-self-center">
       <h5><%= blocked_movie.movie.title %> (<%= blocked_movie.movie.year %>)</h5>
-      <span class="badge badge-warning" style="margin-bottom:15px;"><%= blocked_movie.movie.score %></span>
+      <span class="badge badge-warning score-margin-bottom-15px"><%= blocked_movie.movie.score %></span>
       <p><%= blocked_movie.movie.summary %></p>
       <p><%= blocked_movie.movie.genres %></p>
       <%= link_to "IMDb", "https://www.imdb.com/title/#{blocked_movie.imdb}/", class: "btn btn-secondary", target: "_blank" %>

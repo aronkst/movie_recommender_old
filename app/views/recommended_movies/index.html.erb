@@ -7,12 +7,12 @@
     </div>
     <div class="col-7 align-self-center">
       <h5><%= recommended_movie["movie"].title %> (<%= recommended_movie["movie"].year %>)</h5>
-      <span class="badge badge-warning" style="margin-bottom:15px;"><%= recommended_movie["movie"].score %></span>
-      <span class="badge badge-primary" style="margin-bottom:15px;"><%= recommended_movie["score"] %></span>
+      <span class="badge badge-warning score-margin-bottom-15px"><%= recommended_movie["movie"].score %></span>
+      <span class="badge badge-primary score-margin-bottom-15px"><%= recommended_movie["score"] %></span>
       <p><%= recommended_movie["movie"].summary %></p>
       <p><%= recommended_movie["movie"].genres %></p>
       <%= link_to "IMDb", "https://www.imdb.com/title/#{recommended_movie["movie"].imdb}/", class: "btn btn-secondary", target: "_blank" %>
-      <%= link_to "Add", watched_movies_new_path(recommended_movie["movie"].imdb), class: "btn btn-success" %>
+      <%= link_to "Add", watched_movies_new_path(recommended_movie["movie"].imdb, title: recommended_movie["movie"].title), class: "btn btn-success" %>
       <%= link_to "Block", recommended_movies_block_path(recommended_movie["movie"].imdb), class: "btn btn-danger", method: "post" %>
     </div>
     <div class="col-3 align-self-center">
