@@ -1,5 +1,5 @@
 class MostPopularMoviesController < ApplicationController
-  before_action :title_index, only: :index
+  before_action :title
 
   def index
     @movies = CrawlerMostPopularMovies.new.load
@@ -7,7 +7,7 @@ class MostPopularMoviesController < ApplicationController
 
   private
 
-  def title_index
+  def title
     @title = 'Most Popular Movies'
   end
 end
