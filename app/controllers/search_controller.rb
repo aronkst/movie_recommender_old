@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  before_action :title_index
+  before_action :title
 
   def index
     @movies = []
@@ -10,7 +10,10 @@ class SearchController < ApplicationController
 
   private
 
-  def title_index
-    @title = "Search By #{params[:search]}"
+  def title
+    @title = 'Search'
+    return unless params[:search]
+
+    @title = "Search by #{params[:search]}"
   end
 end
