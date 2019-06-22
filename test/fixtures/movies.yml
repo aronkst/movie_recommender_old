@@ -23,3 +23,11 @@ three:
   summary: A musician helps a young singer find fame as age and alcoholism send his own career into a downward spiral.
   year: 2018
   genres: Drama, Music, Romance
+
+four:
+  imdb: tt2674426
+  score: 7.4
+  title: Me Before You
+  summary: A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.
+  year: 2016
+  genres: Drama, Romance

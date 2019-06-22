@@ -13,7 +13,7 @@
       <p><%= recommended_movie["movie"].genres %></p>
       <%= link_to "IMDb", "https://www.imdb.com/title/#{recommended_movie["movie"].imdb}/", class: "btn btn-secondary", target: "_blank" %>
       <%= link_to "Add", watched_movies_create_path(recommended_movie["movie"].imdb, title: recommended_movie["movie"].title), class: "btn btn-success", method: "post" %>
-      <%= link_to "Block", recommended_movies_block_path(recommended_movie["movie"].imdb), class: "btn btn-danger", method: "post" %>
+      <%= link_to "Block", blocked_movies_create_path(recommended_movie["movie"].imdb), class: "btn btn-danger", method: "post" %>
     </div>
     <div class="col-3 align-self-center">
       <% recommended_movie["recommended_by"].each do |movie| %>

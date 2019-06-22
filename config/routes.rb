@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   get 'blocked_movies', to: 'blocked_movies#index',
                         as: 'blocked_movies_index'
-  delete 'blocked_movies/:imdb/delete', to: 'blocked_movies#destroy',
-                                        as: 'blocked_movies_destroy'
+  post 'blocked_movies/:imdb/create', to: 'blocked_movies#create',
+                                      as: 'blocked_movies_create'
+  delete 'blocked_movies/:imdb/destroy', to: 'blocked_movies#destroy',
+                                         as: 'blocked_movies_destroy'
 
   get 'watched_movies', to: 'watched_movies#index',
                         as: 'watched_movies_index'
@@ -21,8 +23,6 @@ Rails.application.routes.draw do
 
   get 'recommended_movies', to: 'recommended_movies#index',
                             as: 'recommended_movies_index'
-  post 'recommended_movies/:imdb/block', to: 'recommended_movies#block',
-                                         as: 'recommended_movies_block'
 
   root 'recommended_movies#index'
 

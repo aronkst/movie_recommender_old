@@ -34,7 +34,7 @@
       <div class="album py-3 bg-light">
         <div class="container">
           <% if flash[:error] %>
-            <div class="alert alert-danger" role="alert">
+            <div id="flash_error" class="alert alert-danger" role="alert">
               <%= flash[:error] %>
             </div>
           <% end %>
