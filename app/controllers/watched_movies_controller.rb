@@ -1,5 +1,5 @@
 class WatchedMoviesController < ApplicationController
-  before_action :title_index, only: :index
+  before_action :title
 
   def index
     @watched_movies = WatchedMovie.includes(:movie).all
@@ -23,7 +23,7 @@ class WatchedMoviesController < ApplicationController
 
   private
 
-  def title_index
+  def title
     @title = 'Watched Movies'
   end
 end

@@ -16,8 +16,8 @@ Rails.application.routes.draw do
 
   get 'watched_movies', to: 'watched_movies#index',
                         as: 'watched_movies_index'
-  post 'watched_movies/:imdb/new', to: 'watched_movies#create',
-                                   as: 'watched_movies_create'
+  post 'watched_movies/:imdb/create', to: 'watched_movies#create',
+                                      as: 'watched_movies_create'
   delete 'watched_movies/:imdb/destroy', to: 'watched_movies#destroy',
                                          as: 'watched_movies_destroy'
 
