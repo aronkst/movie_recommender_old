@@ -14,14 +14,8 @@ Rails.application.routes.draw do
 
   get 'watched_movies', to: 'watched_movies#index',
                         as: 'watched_movies_index'
-  get 'watched_movies/:imdb/new', to: 'watched_movies#new',
-                                  as: 'watched_movies_new'
   post 'watched_movies/:imdb/new', to: 'watched_movies#create',
                                    as: 'watched_movies_create'
-  get 'watched_movies/:imdb/edit', to: 'watched_movies#edit',
-                                   as: 'watched_movies_edit'
-  patch 'watched_movies/:imdb/edit', to: 'watched_movies#update',
-                                     as: 'watched_movies_update'
   delete 'watched_movies/:imdb/destroy', to: 'watched_movies#destroy',
                                          as: 'watched_movies_destroy'
 
@@ -33,7 +27,4 @@ Rails.application.routes.draw do
   root 'recommended_movies#index'
 
   mount Sidekiq::Web => '/sidekiq'
-
-  # For details on the DSL available within this file,
-  # see http://guides.rubyonrails.org/routing.html
 end

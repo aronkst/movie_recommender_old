@@ -1,5 +1,0 @@
-<h1>Add an watched movie: <small class="text-muted"><%= params[:title] %></small></h1>
-<hr />
-<%= form_for @watched_movie, url: watched_movies_create_path(params[:imdb], title: params[:title]) do |f| %>
-  <%= render "form", f: f, watched_movie: @watched_movie, button_text: "Add", button_class: "btn btn-success" %>
-<% end %>

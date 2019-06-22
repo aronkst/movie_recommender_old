@@ -1,5 +1,0 @@
-<h1>Edit an watched movie: <small class="text-muted"><%= @watched_movie.movie.title %></small></h1>
-<hr />
-<%= form_for @watched_movie, url: watched_movies_update_path(@watched_movie.imdb), method: "patch" do |f| %>
-  <%= render partial: "form", locals: { f: f, watched_movie: @watched_movie, button_text: "Edit", button_class: "btn btn-primary" } %>
-<% end %>

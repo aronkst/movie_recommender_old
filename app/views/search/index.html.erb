@@ -25,7 +25,7 @@
     <div class="col-11 align-self-center">
       <h5><%= movie[:title] %> (<%= movie[:year] %>)</h5>
       <%= link_to "IMDb", "https://www.imdb.com/title/#{movie[:imdb]}/", class: "btn btn-secondary", target: "_blank" %>
-      <%= link_to "Add", watched_movies_new_path(movie[:imdb], title: movie[:title]), class: "btn btn-success" %>
+      <%= link_to "Add", watched_movies_create_path(movie[:imdb], title: movie[:title]), class: "btn btn-success", method: "post" %>
     </div>
   </div>
   <% unless @movies.last == movie %>

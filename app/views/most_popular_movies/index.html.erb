@@ -12,7 +12,7 @@
       <span class="badge badge-warning score-margin-bottom-15px"><%= movie[:score] %></span>
       <br />
       <%= link_to "IMDb", "https://www.imdb.com/title/#{movie[:imdb]}/", target: "_blank", class: "btn btn-secondary" %>
-      <%= link_to "Add", watched_movies_new_path(movie[:imdb], title: movie[:title]), class: "btn btn-success" %>
+      <%= link_to "Add", watched_movies_create_path(movie[:imdb], title: movie[:title]), class: "btn btn-success", method: "post" %>
     </div>
   </div>
   <% unless @movies.last == movie %>
