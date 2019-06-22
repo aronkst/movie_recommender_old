@@ -1,6 +1,7 @@
 <h1>Watched Movies</h1>
 <hr />
 <% @watched_movies.each do |watched_movie| %>
+  <% next if watched_movie.movie.nil? %>
   <div class="row">
     <div class="col-2 align-self-center">
       <%= show_poster(watched_movie.movie) %>
